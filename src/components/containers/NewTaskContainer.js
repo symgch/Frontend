@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import NewTaskView from '../views/NewTaskView';
 import { addTaskThunk } from '../../store/thunks';
@@ -13,8 +13,8 @@ class NewTaskContainer extends Component {
           title: "", 
           due: "", 
           employeeId: null, 
-          redirect: false, 
-          redirectId: null,
+          navigate: false, 
+          navigatetId: null,
           error: ""
         };
     }
@@ -41,20 +41,20 @@ class NewTaskContainer extends Component {
         let newTask = await this.props.addTask(task);
 
         this.setState({
-          redirect: true, 
-          redirectId: newTask.id,
+          navigate: true, 
+          navigatetId: newTask.id,
           error: ""
         });
     }
 
     componentWillUnmount() {
-        this.setState({redirect: false, redirectId: null});
+        this.setState({navigate: false, navigatetId: null});
     }
 
     render() {
       //go to single course view of newly created course
         if(this.state.redirect) {
-          return (<Redirect to={`/task/${this.state.redirectId}`}/>)
+          return (<Navigate to={`/task/${this.state.navigatetId}`}/>)
         }
         return (
           <NewTaskView 

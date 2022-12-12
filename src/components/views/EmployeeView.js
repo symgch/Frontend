@@ -29,7 +29,7 @@ const EmployeeView = (props) => {
             <Link to={`/task/${task.id}`}>
               <h4>{task.title}</h4>
             </Link>
-            <button onClick={() => editCourse({id:task.id, employeeId: employee.id})}>+</button>
+            <button onClick={() => editTask({id:task.id, employeeId: employee.id})}>+</button>
             </div>
           );
         })}</div>

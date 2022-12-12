@@ -16,7 +16,7 @@ const AllTasksView = (props) => {
   
   return (
     <div>
-      {courses.map((task) => {
+      {tasks.map((task) => {
         let title = task.title;
         return (
           <div key={task.id}>

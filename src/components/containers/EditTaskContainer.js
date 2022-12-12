@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { fetchTaskThunk, editTaskThunk } from '../../store/thunks';
 
@@ -12,8 +12,8 @@ class EditTaskContainer extends Component {
           title: "", 
           due: "",
           employeeId: null, 
-          redirect: false, 
-          redirectId: null
+          navigate: false, 
+          navigateId: null
         };
     }
 
@@ -21,9 +21,9 @@ class EditTaskContainer extends Component {
         //getting course ID from url
         this.props.fetchTask(this.props.match.params.id);
         this.setState({
-            title: this.props.course.title, 
-            due: this.props.course.due,
-            employeeId: this.props.course.employeeId, 
+            title: this.props.task.title, 
+            due: this.props.task.due,
+            employeeId: this.props.task.employeeId, 
         });
       }
 
@@ -37,7 +37,7 @@ class EditTaskContainer extends Component {
         event.preventDefault();
         //get new info for course from form input
         let task = {
-            id: this.props.course.id,
+            id: this.props.task.id,
             title: this.state.title,
             due: this.state.due,
             employeeId: this.state.employeeId
@@ -46,20 +46,20 @@ class EditTaskContainer extends Component {
         this.props.editTask(task);
 
         this.setState({
-          redirect: true, 
-          redirectId: this.props.task.id
+          navigate: true, 
+          navigateId: this.props.task.id
         });
 
     }
 
     componentWillUnmount() {
-        this.setState({redirect: false, redirectId: null});
+        this.setState({navigate: false, navigateId: null});
     }
 
     render() {
       //go to single course view of the edited course
         if(this.state.redirect) {
-          return (<Redirect to={`/course/${this.state.redirectId}`}/>)
+          return (<Navigate to={`/course/${this.state.navigateId}`}/>)
         }
 
         return (
@@ -72,8 +72,8 @@ class EditTaskContainer extends Component {
             <input type="text" name="due" value={this.state.due} onChange={(e) => this.handleChange(e)}/>
             <br/>
   
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>instructorId: </label>
-            <input type="text" name="instructorId" value={this.state.instructorId} onChange={(e) => this.handleChange(e)} />
+            <label style={{color:'#11153e', fontWeight: 'bold'}}>employeeId: </label>
+            <input type="text" name="employeeId" value={this.state.employeeId} onChange={(e) => this.handleChange(e)} />
             <br/>
   
             <button type="submit">
