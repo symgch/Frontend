@@ -20,7 +20,7 @@ import {
 const App = () => {
   return (
     <div className="App">
-      <Switch>
+      <Route>
         <Route exact path="/" component={HomePageContainer} />
         <Route exact path="/employees" component={AllEmployeesContainer} />
         <Route exact path="/employee/:id" component={EmployeeContainer} />
@@ -29,7 +29,7 @@ const App = () => {
         <Route exact path="/task/:id" component={TaskContainer} />
         <Route exact path="/edittask/:id" component={EditTaskContainer} />
 
-      </Switch>        
+      </Route>        
     </div>
   );
 }

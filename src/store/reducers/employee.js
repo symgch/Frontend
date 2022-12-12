@@ -1,7 +1,7 @@
 import { FETCH_EMPLOYEE } from "../actions/actionTypes";
 
 const initialState = {
-  courses: [],
+  tasks: [],
 };
 
 const employee = (state = initialState, action) => {
