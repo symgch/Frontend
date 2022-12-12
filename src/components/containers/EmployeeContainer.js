@@ -39,7 +39,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchEmployee: (id) => dispatch(fetchEmployeeThunk(id)),
-    editTask: (course) => dispatch(editTaskThunk(task)),
+    editTask: (task) => dispatch(editTaskThunk(task)),
     fetchTasks: () => dispatch(fetchAllTasksThunk()),
 
   };
