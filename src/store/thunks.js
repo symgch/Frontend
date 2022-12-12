@@ -38,7 +38,7 @@ export const fetchEmployeeThunk = (id) => async (dispatch) => {
 export const fetchAllTasksThunk = () => async (dispatch) => {
   try {
     let res = await axios.get(`${path}/tasks`);
-    dispatch(ac.fetchAllTask(res.data));
+    dispatch(ac.fetchAllTasks(res.data));
   } catch(err) {
     console.error(err);
   }
