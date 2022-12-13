@@ -1,4 +1,3 @@
-import { Task } from '../../../../Backend/database/models';
 import * as ac from './actions/actionCreators';
 const axios = require('axios');
 

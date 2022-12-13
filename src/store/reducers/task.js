@@ -1,4 +1,4 @@
-import { FETCH_TASK } from "../actions/actionCreators";
+import { FETCH_TASK } from "../actions/actionTypes";
 
 const initialState = {
   employee: {},
