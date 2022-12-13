@@ -1,4 +1,3 @@
-import { Task } from '../../../../Backend/database/models';
 import * as ac from './actions/actionCreators';
 const axios = require('axios');
 
@@ -38,7 +37,7 @@ export const fetchEmployeeThunk = (id) => async (dispatch) => {
 export const fetchAllTasksThunk = () => async (dispatch) => {
   try {
     let res = await axios.get(`${path}/tasks`);
-    dispatch(ac.fetchAllTask(res.data));
+    dispatch(ac.fetchAllTasks(res.data));
   } catch(err) {
     console.error(err);
   }
