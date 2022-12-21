@@ -12,12 +12,13 @@ import AllTasksView from '../views/AllTasksView';
 class AllTasksContainer extends Component {
     componentDidMount() {
       this.props.fetchAllTasks();
+      console.log("Printing tasks", this.props.allTasks);
     }
     render(){
         return(
             <div>
                 <AllTasksView 
-                  task={this.props.allTasks}
+                  tasks={this.props.allTasks}
                   deleteTask={this.props.deleteTask}   
                 />
             </div>
