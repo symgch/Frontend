@@ -18,7 +18,7 @@ class EmployeeContainer extends Component {
   render() {
     return (
       <EmployeeView 
-        instructor={this.props.employee}
+        employee={this.props.employee}
         editTask={this.props.editTask}
         allTasks={this.props.allTasks}
       />
