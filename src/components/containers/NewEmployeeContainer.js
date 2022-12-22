@@ -13,7 +13,6 @@ class NewEmployeeContainer extends Component {
           firstname: "", 
           lastname: "",
           department: "", 
-          taskId: null, 
           redirect: false, 
           redirectId: null,
           error: ""
@@ -54,7 +53,7 @@ class NewEmployeeContainer extends Component {
     }
 
     render() {
-      //go to single course view of newly created course
+      //go to single employee view of newly created employee
         if(this.state.redirect) {
           return (<Redirect to={`/employee/${this.state.redirectId}`}/>)
         }

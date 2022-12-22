@@ -22,7 +22,7 @@ class EditEmployeeContainer extends Component {
     componentDidMount() {
         //getting employee ID from url
         this.props.fetchEmployee(this.props.match.params.id);
-        this.props.fetchTasks();
+        this.props.fetchTask();
         this.setState({
             firstname: this.props.employee.firstname, 
             lastname: this.props.employee.lastname, 
