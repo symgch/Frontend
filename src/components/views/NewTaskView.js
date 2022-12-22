@@ -1,8 +1,9 @@
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NewTaskView = (props) => {
     const {handleChange, handleSubmit, error } = props;
-  
+
+
     return (
       <div className="root">
         <div className="formContainer">
@@ -26,12 +27,15 @@ const NewTaskView = (props) => {
             <input type="text" name="employeeId" onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
-  
-            <button type="submit">
-              Submit
-            </button>
+
+            <button type="submit">Submit</button>
+      
             <br/>
             <br/>
+
+            <Link to={'/tasks'} > 
+              <button>Back</button> 
+            </Link>
           </form>
           {error!=="" && <p>{error}</p>}
           </div>

@@ -42,7 +42,6 @@ const mapDispatch = (dispatch) => {
 AllEmployeesContainer.propTypes = {
   allEmployees: PropTypes.array.isRequired,
   fetchAllEmployees: PropTypes.func.isRequired,
-  deleteEmployeeThunk: PropTypes.func.isRequired,
 };
 
 // Export our store-connected container by default;
