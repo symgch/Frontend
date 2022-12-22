@@ -1,4 +1,4 @@
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NewEmployeeView = (props) => {
     const {handleChange, handleSubmit, error } = props;
@@ -26,6 +26,10 @@ const NewEmployeeView = (props) => {
             <input type="text" name="department" onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
+
+            <Link to={'/tasks'} > 
+              <button>Back</button> 
+            </Link>
   
   {/*do we generate one?*/}
             {/* <label style={{color:'#11153e', fontWeight: 'bold'}}>employeeId: </label>

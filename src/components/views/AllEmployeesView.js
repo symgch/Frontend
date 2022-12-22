@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const AllEmployeesView = (props) => {
-  let {employee, deleteEmployee} = props;
+  let {allEmployees, deleteEmployee} = props;
   if (!props.allEmployees.length) {
     return (
     <div>
@@ -16,7 +16,7 @@ const AllEmployeesView = (props) => {
 
   return (
     <div>
-      {props.allEmployees.map((employee) => {
+      {allEmployees.map((employee) => {
         let name = employee.firstname + " " + employee.lastname;
         return (
           <div key={employee.id}>
@@ -24,10 +24,15 @@ const AllEmployeesView = (props) => {
             <h1>{name}</h1>
           </Link>
           <p>{employee.department}</p>
+          <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
         </div>
         );
 
       })}
+
+      <br>
+      </br>
+
       <Link to={`/newEmployee`}>
         <button>Add New Employee</button>
       </Link>
@@ -37,6 +42,7 @@ const AllEmployeesView = (props) => {
 
 AllEmployeesView.propTypes = {
   allEmployees: PropTypes.array.isRequired,
+  deleteEmployee: PropTypes.func.isRequired,
   
 };
 

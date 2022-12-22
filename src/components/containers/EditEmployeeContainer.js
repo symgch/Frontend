@@ -24,9 +24,9 @@ class EditEmployeeContainer extends Component {
         this.props.fetchEmployee(this.props.match.params.id);
         this.props.fetchTasks();
         this.setState({
-            firstname: this.props.task.firstname, 
-            lastname: this.props.task.lastname, 
-            department: this.props.task.department,
+            firstname: this.props.employee.firstname, 
+            lastname: this.props.employee.lastname, 
+            department: this.props.employee.department,
             taskId: this.props.task.taskId, 
         });
       }
@@ -101,7 +101,7 @@ class EditEmployeeContainer extends Component {
             <input type="text" name="deparment" value={this.state.department || ''} placeholder={employee.department} onChange={(e) => this.handleChange(e)}/>
             <br/>
 
-            <select onChange={(e) => this.handleSelectChange(e)}>
+            {/* <select onChange={(e) => this.handleSelectChange(e)}>
               {employee.task!==null ?
                 <option value={employee.taskId}>{employee.task.title+" (current)"}</option>
               : <option value="due">Due</option>
@@ -112,7 +112,7 @@ class EditEmployeeContainer extends Component {
                 )
               })}
               {employee.task!==null && <option value="due">Due</option>}
-            </select>
+            </select> */}
   
             <button type="submit">
               Submit
@@ -162,5 +162,11 @@ const mapDispatch = (dispatch) => {
 
     })
 }
+
+EditEmployeeContainer.propTypes = {
+    fetchEmployee: PropTypes.func.isRequired,
+    editEmployee: PropTypes.func.isRequired,
+    
+  };
 
 export default connect(mapState, mapDispatch)(EditEmployeeContainer);
