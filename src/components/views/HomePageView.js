@@ -4,10 +4,10 @@ import './home.css'
 const HomePageView = () => {
   return (
     <div>
-      <div className='Background1'>
+      <div className="Background1">
       <br>
       </br>
-      <h3 style={{color:'white', fontStyle: 'italic'}}>Final Project</h3>
+      <h1 style={{color:'white', fontStyle: 'italic'}}>Final Project</h1>
       <h6>Employee-Task Relationship</h6>
       <Link to={'/employees'}> 
         <button style={{backgroundImage:"url('/laptop.jpg')",backgroundSize:"cover", width:"300px", height:"200px", color:'whitesmoke', fontWeight: 'bold', fontSize:'20px',}}>
