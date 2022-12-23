@@ -13,6 +13,7 @@ class EditEmployeeContainer extends Component {
           firstname: "", 
           lastname: "",
           department: "", 
+          employeeId: null,
           redirect: false, 
           redirectId: null,
           error: ""
@@ -26,7 +27,7 @@ class EditEmployeeContainer extends Component {
             firstname: this.props.employee.firstname, 
             lastname: this.props.employee.lastname, 
             department: this.props.employee.department, 
-            taskId: this.state.taskId
+            employeeId: this.state.employeeId
         });
       }
 
@@ -42,7 +43,7 @@ class EditEmployeeContainer extends Component {
       //when the form gets submitted, this is how we can change
       //assigned instructor without having to manually enter in the 
       //instructorId like before
-      if (event.target.value === "staff") {
+      if (event.target.value === "0") {
         this.setState({ employeeId: null });
       } else {
         this.setState({ employeeId: event.target.value })
@@ -62,6 +63,7 @@ class EditEmployeeContainer extends Component {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             department: this.state.department,
+            employeeId: this.state.employeeId
         };
         
         this.props.editEmployee(employee);
