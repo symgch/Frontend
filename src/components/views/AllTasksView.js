@@ -23,7 +23,8 @@ const AllTasksView = (props) => {
         let title = task.title;
         let due = task.due;
         return (
-          <table>
+          
+          <table className='table1'>
             <thead>
               <tr>
                 <th>Tasks</th>
@@ -47,6 +48,7 @@ const AllTasksView = (props) => {
               </tr>
             </tbody>
           </table>
+          
         );
       }
       )} 

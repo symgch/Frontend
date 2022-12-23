@@ -42,6 +42,7 @@ class EditTaskContainer extends Component {
       title: "",
       due: "",
       employeeId: null,
+      description: "",
       redirect: false,
       redirectId: null,
       error: ""
@@ -56,6 +57,7 @@ class EditTaskContainer extends Component {
       title: this.props.task.title,
       due: this.props.task.due,
       employeeId: this.props.task.employeeId,
+      description: this.props.task.description,
     });
   }
 
@@ -91,7 +93,8 @@ class EditTaskContainer extends Component {
       id: this.props.task.id,
       title: this.state.title,
       due: this.state.due,
-      employeeId: this.state.employeeId
+      employeeId: this.state.employeeId,
+      description: this.state.description,
     };
 
     this.props.editTask(task);
@@ -119,85 +122,91 @@ class EditTaskContainer extends Component {
       return (<Redirect to={`/task/${this.state.redirectId}`} />)
     }
 
+    const myStyle={
+      backgroundImage:`url(${process.env.PUBLIC_URL+ "/mount.jpg"})`,
+              height:'100vh',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              };
+
     return (
-      <table className="edit">
-        <tbody>
-          <tr>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-              <td>
-                <form style={{ textAlign: 'center' }} onSubmit={(e) => this.handleSubmit(e)}>
-                  <label style={{ color: '#11153e', fontWeight: 'bold' }}>Title: </label>
-                  <input type="text" name="title" value={this.state.title || ''} placeholder={task.title} onChange={(e) => this.handleChange(e)} />
-                  <br />
+      <div style={myStyle}>
+      <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}> <h2>Submit after change! </h2>
+        <div className="edit1">
+          <form style={{ textAlign: 'center' }} onSubmit={(e) => this.handleSubmit(e)}>
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>Title: </label>
+            <input type="text" name="title" value={this.state.title || ''} placeholder={task.title} onChange={(e) => this.handleChange(e)} />
+            <br />
 
-                  <label style={{ color: '#11153e', fontWeight: 'bold' }}>Due: </label>
-                  <input type="text" name="due" value={this.state.due || ''} placeholder={task.due} onChange={(e) => this.handleChange(e)} />
-                  <br />
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>Due: </label>
+            <input type="text" name="due" value={this.state.due || ''} placeholder={task.due} onChange={(e) => this.handleChange(e)} />
+            <br />
 
-                  <select onChange={(e) => this.handleSelectChange(e)}>
-                    {task.employee !== null ?
-                      <option value={task.employeeId}>{task.employee.firstname + " (current)"}</option>
-                      : <option value="staff">Staff</option>
-                    }
-                    {otherEmployees.map(employee => {
-                      return (
-                        <option value={employee.id} key={employee.id}>{employee.firstname}</option>
-                      )
-                    })}
-                    {task.employee !== null && <option value="staff">Staff</option>}
-                  </select>
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>Description: </label>
+            <input type="text" name="description" value={this.state.description || ''} placeholder={task.description} onChange={(e) => this.handleChange(e)} />
+            <br />
 
-                </form>
-              </td>
-              <td>
-                {this.state.error !== "" && <p>{this.state.error}</p>}
+            <select onChange={(e) => this.handleSelectChange(e)}>
+              {task.employee !== null ?
+                <option value={task.employeeId}>{task.employee.firstname + " (current)"}</option>
+                : <option value="staff">Staff</option>
+              }
+              {otherEmployees.map(employee => {
+                return (
+                  <option value={employee.id} key={employee.id}>{employee.firstname}</option>
+                )
+              })}
+              {task.employee !== null && <option value="staff">Staff</option>}
+            </select>
+            <br /><br />
 
-                {task.employeeId !== null ?
-                  <div> Current employee:
-                    <Link to={`/employee/${task.employeeId}`}>{task.employee.firstname}</Link>
+            <button type="submit">
+              Submit
+            </button>
 
-                    <br></br>
-                    <br></br>
+          </form>
 
-                    <button onClick={async () => { await editTask({ id: task.id, employeeId: null }); fetchTask(task.id) }}>Unassign</button>
+          {this.state.error !== "" && <p>{this.state.error}</p>}
 
-                  </div>
-                  : <div> No employee currently assigned </div>
-                }
-              </td>
-              <td>
-                <div> Other employees
-                  {otherEmployees.map(employee => {
-                    return (
-                      <div key={employee.id}>
-                        <Link to={`/employee/${employee.id}`}>
-                          <h4>{employee.firstname}</h4>
-                        </Link>
-                        <button onClick={async () => { await editTask({ id: task.id, employeeId: employee.id }); fetchTask(task.id) }}>Assign this employee</button>
-                      </div>
-                    )
-                  })
-                  }
-                </div>
-              </td>
-              <td>
-                <div> <h4>Submit after change! </h4>
+          <br />
 
-                  <button type="submit">
-                    Submit
-                  </button>
-                  <br></br>
-                  <br></br>
-                  <Link to={`/task/${task.id}`}>
-                    <button>Back</button>
-                  </Link>
+          {task.employeeId !== null ?
+            <div className='edit3'> Current employee:
+              <Link to={`/employee/${task.employeeId}`}>{task.employee.firstname}</Link>
 
-                </div>
-              </td>
+              <br></br>
+              <br></br>
+
+              <button onClick={async () => { await editTask({ id: task.id, employeeId: null }); fetchTask(task.id) }}>Unassign</button>
+
             </div>
-          </tr>
-        </tbody>
-      </table>
+            : <div> No employee currently assigned </div>
+          }
+          <br />
+
+          <div> Other employees
+            {otherEmployees.map(employee => {
+              return (
+                <div key={employee.id}>
+                  <Link to={`/employee/${employee.id}`}>
+                    <h4>{employee.firstname}</h4>
+                  </Link>
+                  <button onClick={async () => { await editTask({ id: task.id, employeeId: employee.id }); fetchTask(task.id) }}>Assign this employee</button>
+                </div>
+              )
+            })
+            }
+          </div>
+
+          <br />
+
+          <Link to={`/task/${task.id}`}>
+            <button>Back</button>
+          </Link>
+
+        </div>
+      </div>
+      </div>
     )
   }
 }

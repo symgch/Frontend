@@ -4,7 +4,6 @@ import './home.css'
 const NewTaskView = (props) => {
   const { handleChange, handleSubmit, error } = props;
 
-
   return (
     <div className="back">
       <div className="root">
@@ -33,7 +32,12 @@ const NewTaskView = (props) => {
             <br />
             <br />
 
-            <button type="submit"> Submit </button>
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>description: </label>
+            <input type="text" name="description" onChange={(e) => handleChange(e)} />
+            <br />
+            <br />
+
+            <button type='submit'> Submit </button>
 
             <br />
             <br />

@@ -1,55 +1,122 @@
-table {
-    border-collapse: collapse;
-    max-width: 900px;
-    width: 100%;
-    margin: 2rem auto;
-    background-color: antiquewhite;
+.table1 {
+  border-collapse: collapse;
+  max-width: 900px;
+  width: 100%;
+  margin: 2rem auto;
+  background-color: antiquewhite;
 }
 
-table th, table td {
-    border: 2px solid #ddd;
-    padding: 8px;
-    width: 600px;
+.table1 th,
+td {
+  border: 2px solid #ddd;
+  padding: 8px;
+  width: 600px;
 }
 
 .Background {
-    background-image: 
+  background-image:
     url("/public/sunset.jpg");
-    background-size: "cover";
-    height: 100vh;
-    background-repeat:no-repeat; 
-    background-position: center;
-  }
+  background-size: "cover";
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: scroll;
+  margin-top: -23px;
+  min-height: 705px;
+}
 
 .title {
-    color:#ddd;
+  color: #ddd;
 }
 
 .Background1 {
-    background-image: 
+  background-image:
     url("/public/sky.jpg");
-    background-size: "cover";
-    height: 100vh;
-    background-repeat:no-repeat; 
-    background-position: center;
+  background-size: "cover";
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .back {
-    background-image: 
+  background-image:
     url("/public/set.jpg");
-    background-size: "cover";
-    height: 100vh;
-    background-repeat:no-repeat; 
-    background-position: center;
-    margin-top: -40px;
-  }
+  background-size: "cover";
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: -43px;
+}
 
-  .edit {
-    background-image: 
+.edit {
+  background-image:
     url("/public/cloud.jpg");
-    background-size: "cover";
-    height: 100vh;
-    background-repeat:no-repeat; 
-    background-position: center;
-    margin-top: -40px;
-  }
+  background-size: "cover";
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: -40px;
+}
+
+.table2 {
+  border-collapse: collapse;
+  max-width: 900px;
+  width: 50%;
+  margin: 2rem auto;
+  background-color: antiquewhite;
+}
+
+.Background2 {
+  background-image:
+    url("/public/bw.jpg");
+  background-size: "cover";
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: scroll;
+  margin-top: -40px;
+  min-height: 705px;
+}
+
+.back2 {
+  background-image:
+    url("/public/new.jpg");
+  background-size: "cover";
+  height: 200vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: -43px;
+}
+
+.edit1, .edit2 {
+  border: 2px solid #ddd;
+  padding: 8px;
+  width: 600px;
+  border-collapse: collapse;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 2rem auto;
+  background-color: white;
+}
+
+.edit3 {
+  border: 2px solid #ddd;
+  padding: 8px;
+  width: 400px;
+  border-collapse: collapse;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 1rem auto;
+}
+
+.backlast {
+  background-image:
+    url("/public/bw.jpg");
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 25%;
+}

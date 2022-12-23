@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import './home.css'
 
 const AllEmployeesView = (props) => {
   let { allEmployees, deleteEmployee } = props;
@@ -15,16 +16,18 @@ const AllEmployeesView = (props) => {
   }
 
   return (
-    <div>
+    <div className="Background2">
       {allEmployees.map((employee) => {
         let name = employee.firstname + " " + employee.lastname;
         return (
           <div key={employee.id}>
-            <Link to={`/employee/${employee.id}`}>
-              <h1>{name}</h1>
-            </Link>
-            <p>{employee.department}</p>
-            <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
+            <table className="table2">            
+              <Link to={`/employee/${employee.id}`}>
+                <h1>{name}</h1>
+              </Link>
+              <h3>{employee.department}</h3>
+              <button onClick={() => deleteEmployee(employee.id)}>Delete</button>             
+            </table>
           </div>
         );
 
