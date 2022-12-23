@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { 
   fetchEmployeeThunk,
   fetchAllTasksThunk,
-  editTaskThunk 
+  editTaskThunk,
 } from "../../store/thunks";
 
 import { EmployeeView } from "../views";

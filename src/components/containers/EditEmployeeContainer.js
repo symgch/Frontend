@@ -1,8 +1,9 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from "prop-types";
 import { BrowserRouter as Redirect, Link } from 'react-router-dom';
 
-import { fetchEmployeeThunk, editEmployeeThunk, fetchAllTasksThunk  } from '../../store/thunks';
+import { fetchEmployeeThunk, editEmployeeThunk, } from '../../store/thunks';
 
 
 class EditEmployeeContainer extends Component {
@@ -22,12 +23,11 @@ class EditEmployeeContainer extends Component {
     componentDidMount() {
         //getting employee ID from url
         this.props.fetchEmployee(this.props.match.params.id);
-        this.props.fetchTask();
         this.setState({
             firstname: this.props.employee.firstname, 
             lastname: this.props.employee.lastname, 
-            department: this.props.employee.department,
-            taskId: this.props.task.taskId, 
+            department: this.props.employee.department, 
+            taskId: this.state.taskId
         });
       }
 
@@ -35,14 +35,6 @@ class EditEmployeeContainer extends Component {
       this.setState({
         [event.target.name]: event.target.value
       });
-    }
-
-    handleSelectChange = event => {
-      if (event.target.value === "task") {
-        this.setState({taskId:null});
-      } else {
-        this.setState({taskId: event.target.value})
-      }
     }
 
     handleSubmit = event => {
@@ -76,10 +68,7 @@ class EditEmployeeContainer extends Component {
     }
 
     render() {
-        let { employee, allTasks, editEmployee, fetchEmployee} = this.props;
-        let assignedTask = employee.taskId;
-
-        let otherTasks = allTasks.filter(task => task.id!==assignedTask);
+        let { employee, editEmployee, } = this.props;
       
         //go to single course view of the edited course
         if(this.state.navigate) {
@@ -122,25 +111,13 @@ class EditEmployeeContainer extends Component {
           { this.state.error !=="" && <p>{this.state.error}</p> }
 
           {employee.taskId !== null ?
-            <div> Current Task:  
+            <div> Current Tasks:  
             <Link to={`/task/${employee.taskId}`}>{employee.task.title}</Link>
-            <button onClick={async () => {await editEmployee({id:employee.id, taskId: null});  fetchTask(task.id)}}>Unassign</button>
+            <button onClick={async () => {await editEmployee({id:employee.id, taskId: null}); }}>Unassign</button>
             </div>
             : <div> No Tasks currently assigned </div>
           }
 
-          <div> Other tasks
-          {otherTasks.map(task => {
-            return (
-            <div key={task.id}>
-                <Link to={`/task/${task.id}`}>
-                  <h4>{task.title}</h4>
-                </Link>
-                <button onClick={async() => {await editEmployee({id:employee.id, taskId: task.id}); fetchEmployee(employee.id)}}>Assign this task</button>
-            </div>
-            )})
-          }
-          </div>
         </div>
         )
     }
@@ -156,9 +133,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return({
-        editEmployee: (task) => dispatch(editEmployeeThunk(employee)),
+        editEmployee: (employee) => dispatch(editEmployeeThunk(employee)),
         fetchEmployee: (id) => dispatch(fetchEmployeeThunk(id)),
-        fetchTasks: () => dispatch(fetchAllTasksThunk()),
 
     })
 }
@@ -166,6 +142,7 @@ const mapDispatch = (dispatch) => {
 EditEmployeeContainer.propTypes = {
     fetchEmployee: PropTypes.func.isRequired,
     editEmployee: PropTypes.func.isRequired,
+    fetchAllTasks: PropTypes.func.isRequired,
     
   };
 

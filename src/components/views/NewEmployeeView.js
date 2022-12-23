@@ -27,16 +27,10 @@ const NewEmployeeView = (props) => {
             <br/>
             <br/>
 
-            <Link to={'/tasks'} > 
+            <Link to={'/employees'} > 
               <button>Back</button> 
             </Link>
-  
-  {/*do we generate one?*/}
-            {/* <label style={{color:'#11153e', fontWeight: 'bold'}}>employeeId: </label>
-            <input type="text" name="employeeId" onChange={(e) => handleChange(e)} />
-            <br/>
-            <br/> */}
-  
+    
             <button type="submit">
               Submit
             </button>

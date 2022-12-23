@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { 
   fetchAllEmployeesThunk, 
-  deleteEmployeeThunk
+  deleteEmployeeThunk,
 } from "../../store/thunks";
-import { AllEmployeesView } from "../views";
+import { AllEmployeesView } from "../views/";
 
 class AllEmployeesContainer extends Component {
   componentDidMount() {

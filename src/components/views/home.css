@@ -1,0 +1,55 @@
+table {
+    border-collapse: collapse;
+    max-width: 900px;
+    width: 100%;
+    margin: 2rem auto;
+    background-color: antiquewhite;
+}
+
+table th, table td {
+    border: 2px solid #ddd;
+    padding: 8px;
+    width: 600px;
+}
+
+.Background {
+    background-image: 
+    url("/public/sunset.jpg");
+    background-size: "cover";
+    height: 100vh;
+    background-repeat:no-repeat; 
+    background-position: center;
+  }
+
+.title {
+    color:#ddd;
+}
+
+.Background1 {
+    background-image: 
+    url("/public/sky.jpg");
+    background-size: "cover";
+    height: 100vh;
+    background-repeat:no-repeat; 
+    background-position: center;
+}
+
+.back {
+    background-image: 
+    url("/public/set.jpg");
+    background-size: "cover";
+    height: 100vh;
+    background-repeat:no-repeat; 
+    background-position: center;
+    margin-top: -40px;
+  }
+
+  .edit {
+    background-image: 
+    url("/public/cloud.jpg");
+    background-size: "cover";
+    height: 100vh;
+    background-repeat:no-repeat; 
+    background-position: center;
+    margin-top: -40px;
+  }
