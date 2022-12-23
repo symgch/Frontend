@@ -12,8 +12,7 @@ class EditEmployeeContainer extends Component {
         this.state = {
           firstname: "", 
           lastname: "",
-          department: "",
-          taskId: null, 
+          department: "", 
           redirect: false, 
           redirectId: null,
           error: ""
@@ -37,11 +36,24 @@ class EditEmployeeContainer extends Component {
       });
     }
 
+    handleSelectChange = event => {
+      //handle change for the dropdown menu
+      //want to set the instructorId based on the selected choice
+      //when the form gets submitted, this is how we can change
+      //assigned instructor without having to manually enter in the 
+      //instructorId like before
+      if (event.target.value === "staff") {
+        this.setState({ employeeId: null });
+      } else {
+        this.setState({ employeeId: event.target.value })
+      }
+    }
+
     handleSubmit = event => {
         event.preventDefault();
         //implementing form validation
         if (this.state.firstname === "") {
-          this.setState({error: "Error: title cannot be empty"});
+          this.setState({error: "Error: This cannot be empty"});
           return;
         }
 
@@ -50,7 +62,6 @@ class EditEmployeeContainer extends Component {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             department: this.state.department,
-            taskId: this.state.taskId
         };
         
         this.props.editEmployee(employee);
@@ -68,12 +79,13 @@ class EditEmployeeContainer extends Component {
     }
 
     render() {
-        let { employee, editEmployee, } = this.props;
-      
-        //go to single course view of the edited course
-        if(this.state.navigate) {
-          return (<Redirect to={`/employee/${this.state.redirectId}`}/>)
-        }
+      let { employee } = this.props;
+
+      //go to single course view of the edited course
+      if (this.state.navigate) {
+        return (<Redirect to={`/employees/${this.state.redirectId}`} />)
+      }
+  
 
         return (
         <div>
@@ -87,21 +99,8 @@ class EditEmployeeContainer extends Component {
             <br/>
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Department: </label>
-            <input type="text" name="deparment" value={this.state.department || ''} placeholder={employee.department} onChange={(e) => this.handleChange(e)}/>
+            <input type="text" name="department" value={this.state.department || ''} placeholder={employee.department} onChange={(e) => this.handleChange(e)}/>
             <br/>
-
-            {/* <select onChange={(e) => this.handleSelectChange(e)}>
-              {employee.task!==null ?
-                <option value={employee.taskId}>{employee.task.title+" (current)"}</option>
-              : <option value="due">Due</option>
-              }
-              {otherTasks.map(task => {
-                return (
-                  <option value={task.id} key={task.id}>{task.title}</option>
-                )
-              })}
-              {employee.task!==null && <option value="due">Due</option>}
-            </select> */}
   
             <button type="submit">
               Submit
@@ -110,13 +109,15 @@ class EditEmployeeContainer extends Component {
           </form>
           { this.state.error !=="" && <p>{this.state.error}</p> }
 
-          {employee.taskId !== null ?
-            <div> Current Tasks:  
-            <Link to={`/task/${employee.taskId}`}>{employee.task.title}</Link>
-            <button onClick={async () => {await editEmployee({id:employee.id, taskId: null}); }}>Unassign</button>
-            </div>
-            : <div> No Tasks currently assigned </div>
-          }
+          <br />
+
+          <h1> Does not work </h1>
+
+          <br />
+
+          <Link to={`/employee/${employee.id}`}>
+            <button>Back</button>
+          </Link>
 
         </div>
         )
@@ -127,7 +128,6 @@ class EditEmployeeContainer extends Component {
 const mapState = (state) => {
     return {
       employee: state.employee,
-      allTasks: state.allTasks
     };
   };
 
@@ -142,7 +142,6 @@ const mapDispatch = (dispatch) => {
 EditEmployeeContainer.propTypes = {
     fetchEmployee: PropTypes.func.isRequired,
     editEmployee: PropTypes.func.isRequired,
-    fetchAllTasks: PropTypes.func.isRequired,
     
   };
 
