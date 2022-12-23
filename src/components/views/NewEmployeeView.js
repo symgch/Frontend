@@ -5,6 +5,7 @@ const NewEmployeeView = (props) => {
 
   return (
     <div className="back2">
+      
       <div className="root">
         <div className="formContainer">
           <div className="formTitle">
@@ -12,6 +13,7 @@ const NewEmployeeView = (props) => {
               New Employee
             </h2>
           </div>
+          <div className="edit4">
           <form style={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }} onSubmit={(e) => handleSubmit(e)}>
             <label style={{ color: '#11153e', fontWeight: 'bold' }}>Firstname: </label>
             <input type="text" name="firstname" onChange={(e) => handleChange(e)} />
@@ -39,6 +41,7 @@ const NewEmployeeView = (props) => {
             <br />
           </form>
           {error !== "" && <p>{error}</p>}
+        </div>
         </div>
       </div>
     </div>

@@ -111,6 +111,19 @@ td {
   margin: 1rem auto;
 }
 
+.edit4 {
+  border: 2px solid #ddd;
+  padding: 8px;
+  width: 400px;
+  border-collapse: collapse;
+  max-width: 900px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 1rem auto;
+  background-color: white;
+}
+
 .backlast {
   background-image:
     url("/public/bw.jpg");
