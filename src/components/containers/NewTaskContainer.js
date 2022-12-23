@@ -54,7 +54,7 @@ class NewTaskContainer extends Component {
     render() {
       //go to single course view of newly created course
         if(this.state.redirect) {
-          return (<Redirect to={`/task/${this.state.redirectId}`}/>)
+          return (<Redirect to={`/tasks/${this.state.redirectId}`}/>)
         }
         return (
           <NewTaskView 

@@ -1,19 +1,10 @@
 import { Link } from 'react-router-dom';
-
+import './home.css'
 
 const HomePageView = () => {
-  const myStyle={
-    backgroundImage:`url(${process.env.PUBLIC_URL+ "/sky.jpg"})`
-            ,height:'100vh',
-            marginTop:'-10px',
-            fontSize:'30px',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            };
-
   return (
     <div>
-      <div style={myStyle}>
+      <div className='Background1'>
       <br>
       </br>
       <h3 style={{color:'white', fontStyle: 'italic'}}>Final Project</h3>
